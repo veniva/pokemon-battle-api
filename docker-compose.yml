@@ -1,6 +1,7 @@
 services:
   api:
     build: .
+    image: pokemon-game-api
     container_name: pokemon-game
     ports:
       - "3000:3000"
