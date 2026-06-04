@@ -1,7 +1,7 @@
 services:
   api:
     build: .
-    container_name: pokemon-game-api
+    container_name: pokemon-game
     ports:
       - "3000:3000"
     env_file:
