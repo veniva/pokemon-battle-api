@@ -22,6 +22,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "docker:up": "docker compose up --build -d",
     "docker:down": "docker compose down",
+    "docker:down:volumes": "docker compose down -v",
     "db:seed": "docker compose run --rm --build seed",
     "db:seed:local": "npm run build && node dist/cli/seed/seed-pokemon.js"
   },
