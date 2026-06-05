@@ -101,7 +101,7 @@ In this matchup, `Single Heavy Hitter` is expected to win because Dragonite's ro
 each opponent before fatigue makes it lose.
 
 
-## Project setup
+## Dev environment setup
 
 ```bash
 $ npm install
