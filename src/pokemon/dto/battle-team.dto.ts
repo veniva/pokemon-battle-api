@@ -1,6 +1,6 @@
 import { Transform, type TransformFnParams } from 'class-transformer';
 import { ArrayMaxSize, ArrayMinSize, IsArray, IsOptional, IsString, Matches, MaxLength } from 'class-validator';
-import { trimStringValue } from '../../helpers/strings';
+import { trimStringValue } from '../../helpers/string.helpers';
 
 export const MAX_BATTLE_TEAM_SIZE = 6;
 

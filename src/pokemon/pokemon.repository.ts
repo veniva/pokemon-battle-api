@@ -21,9 +21,9 @@ interface PokemonIdentifierLookup {
 export class PokemonRepository {
   constructor(@InjectModel(Pokemon.name) private readonly pokemonModel: Model<PokemonDocument>) {}
 
-  /** 
-   * Surch by various identifiers: names, Pokedex numbers, or numeric Pokemon ids.  
-   * Preserves input order, so that the found Pokemons can be split back to teams using the original request.  
+  /**
+   * Surch by various identifiers: names, Pokedex numbers, or numeric Pokemon ids.
+   * Preserves input order, so that the found Pokemons can be split back to teams using the original request.
    * @param identifiers A combined array of TeamA + TeamB player identifiers
    */
   async findByIdentifiers(identifiers: readonly string[]): Promise<PokemonIdentifierResolution[]> {
@@ -56,19 +56,20 @@ export class PokemonRepository {
     }
 
     return lookups.map((lookup) => {
-      const resolvedPokemon = byAnyIdentifier.get(`name:${lookup.normalizedName}`) ??
-          (lookup.dexNumber ? byAnyIdentifier.get(`dex:${lookup.dexNumber}`) : undefined) ??
-          (lookup.pokemonId ? byAnyIdentifier.get(`id:${lookup.pokemonId}`) : undefined) ??
-          null;
-          
+      const resolvedPokemon =
+        byAnyIdentifier.get(`name:${lookup.normalizedName}`) ??
+        (lookup.dexNumber ? byAnyIdentifier.get(`dex:${lookup.dexNumber}`) : undefined) ??
+        (lookup.pokemonId ? byAnyIdentifier.get(`id:${lookup.pokemonId}`) : undefined) ??
+        null;
+
       return {
         identifier: lookup.identifier,
-        pokemon: resolvedPokemon
-      }
+        pokemon: resolvedPokemon,
+      };
     });
   }
 
-    /** Creates every lookup shape supported by the battle API. */
+  /** Creates every lookup shape supported by the battle API. */
   private createLookup(identifier: string): PokemonIdentifierLookup {
     const trimmedIdentifier = identifier.trim();
     const isNumericIdentifier = /^\d+$/.test(trimmedIdentifier);

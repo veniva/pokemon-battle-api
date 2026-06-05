@@ -1,4 +1,4 @@
-import { TransformFnParams } from "class-transformer";
+import { TransformFnParams } from 'class-transformer';
 
 /** Trims optional string DTO values to be used before validation. */
 export function trimStringValue(params: TransformFnParams): unknown {
