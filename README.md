@@ -11,7 +11,7 @@ structured response with scores, round details, and a readable battle log.
 Install Docker, then start the API and MongoDB with Docker Compose:
 
 ```bash
-$ npm run docker:up
+npm run docker:up
 ```
 
 The first run builds the Node API image and downloads the MongoDB image, so expect Docker to store a few hundred MB or
@@ -20,13 +20,13 @@ more on your machine. The containers start in the background, and the API is ava
 Seed the Pokemon dataset into the MongoDB container:
 
 ```bash
-$ npm run db:seed
+npm run db:seed
 ```
 
 Stop the containers when you are done:
 
 ```bash
-$ npm run docker:down
+npm run docker:down
 ```
 
 # How to play
@@ -110,7 +110,7 @@ each opponent before fatigue makes it lose.
 ## Dev environment setup
 
 ```bash
-$ npm install
+npm install
 ```
 
 ## MongoDB
@@ -122,7 +122,7 @@ default, which connects through the port published by Docker Compose. The Docker
 Seed the Pokemon dataset into MongoDB after the database is running:
 
 ```bash
-$ npm run db:seed
+npm run db:seed
 ```
 
 The seed stores one normalized document per Pokemon in the `pokemon` collection, including numeric height and weight
@@ -133,25 +133,32 @@ simulation logic.
 
 ```bash
 # development
-$ npm run start
+npm run start
+
+For local development outside Docker, install dependencies first and seed the local MongoDB instance:
+
+```bash
+npm install
+npm run db:seed:local
+```
 
 # watch mode
-$ npm run start:dev
+npm run start:dev
 
 # production mode
-$ npm run start:prod
+npm run start:prod
 ```
 
 ## Run tests
 
 ```bash
 # unit tests
-$ npm run test
+npm run test
 
 # e2e tests
-$ npm run test:e2e
+npm run test:e2e
 
 # test coverage
-$ npm run test:cov
+npm run test:cov
 ```
 

@@ -22,8 +22,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "docker:up": "docker compose up --build -d",
     "docker:down": "docker compose down",
-    "docker:down:volumes": "docker compose down -v",
-    "db:seed": "npm run build && node dist/cli/seed/seed-pokemon"
+    "db:seed": "docker compose exec -T api node dist/cli/seed/seed-pokemon.js",
+    "db:seed:local": "npm run build && node dist/cli/seed/seed-pokemon.js"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
