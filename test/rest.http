@@ -16,6 +16,22 @@ Content-Type: application/json
   }
 }
 
+### Uneven battle
+
+POST http://localhost:3000/pokemon/battles/simulate
+Content-Type: application/json
+
+{
+  "teamA": {
+    "name": "Many Weak Picks",
+    "pokemon": ["Caterpie", "Weedle", "Pidgey", "Rattata", "Zubat"]
+  },
+  "teamB": {
+    "name": "Single Heavy Hitter",
+    "pokemon": ["Dragonite"]
+  }
+}
+
 ### Not found
 
 POST http://localhost:3000/pokemon/battles/simulate

@@ -1,4 +1,81 @@
 # Pokemon battle simulator
+This API simulates deterministic battles between two teams of Pokemon loaded from MongoDB. Teams fight in the order
+provided in the request: the first Pokemon from each team battle first, the round loser is removed, and the winner stays
+in for the next round with fatigue applied. Rounds continue until one team has no Pokemon left, and the API returns a
+structured response with scores, round details, and a readable battle log.
+
+# How to play
+Start the API and send a `POST` request to `/pokemon/battles/simulate` with two teams. Each team can contain 1 to 6
+Pokemon identifiers, using names, numeric ids, or Pokedex numbers.
+
+Example using Pokemon names:
+
+```http
+POST /pokemon/battles/simulate
+Content-Type: application/json
+```
+
+```json
+{
+  "teamA": {
+    "name": "Garden Squad",
+    "pokemon": ["Bulbasaur", "Ivysaur", "Venusaur"]
+  },
+  "teamB": {
+    "name": "Flame Squad",
+    "pokemon": ["Charmander", "Charmeleon", "Charizard"]
+  }
+}
+```
+
+Example using Pokedex numbers:
+
+```json
+{
+  "teamA": {
+    "name": "Electric Duo",
+    "pokemon": ["025", "026"]
+  },
+  "teamB": {
+    "name": "Ground Line",
+    "pokemon": ["027", "028"]
+  }
+}
+```
+
+Example using mixed identifiers:
+
+```json
+{
+  "teamA": {
+    "name": "Balanced Picks",
+    "pokemon": ["Squirtle", "008", "Blastoise", "25"]
+  },
+  "teamB": {
+    "name": "Forest Picks",
+    "pokemon": ["10", "Butterfree", "Pidgeotto", "018"]
+  }
+}
+```
+
+Example where a larger but weaker team loses:
+
+```json
+{
+  "teamA": {
+    "name": "Many Weak Picks",
+    "pokemon": ["Caterpie", "Weedle", "Pidgey", "Rattata", "Zubat"]
+  },
+  "teamB": {
+    "name": "Single Heavy Hitter",
+    "pokemon": ["Dragonite"]
+  }
+}
+```
+
+In this matchup, `Single Heavy Hitter` is expected to win because Dragonite's round scores are strong enough to knock out
+each opponent before fatigue makes it lose.
+
 
 ## Project setup
 
