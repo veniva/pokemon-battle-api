@@ -29,6 +29,7 @@ export class Pokemon {
   @Prop({ required: true })
   name!: string;
 
+  /** case-insensitive version of `name` for exact lookups. */
   @Prop({ required: true })
   normalizedName!: string;
 
