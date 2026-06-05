@@ -6,6 +6,7 @@ provided in the request: the first Pokemon from each team battle first, the roun
 in for the next round with fatigue applied. Rounds continue until one team has no Pokemon left, and the API returns a
 structured response with scores, round details, and a readable battle log.
 
+
 # How to install
 Install Docker, then start the API and MongoDB with Docker Compose:
 
@@ -14,7 +15,7 @@ $ npm run docker:up
 ```
 
 The first run builds the Node API image and downloads the MongoDB image, so expect Docker to store a few hundred MB or
-more on your machine. After the containers start, the API is available at `http://localhost:3000`.
+more on your machine. The containers start in the background, and the API is available at `http://localhost:3000`.
 
 Seed the Pokemon dataset into the MongoDB container:
 
@@ -29,8 +30,13 @@ $ npm run docker:down
 ```
 
 # How to play
-Start the API and send a `POST` request to `/pokemon/battles/simulate` with two teams. Each team can contain 1 to 6
-Pokemon identifiers, using names, numeric ids, or Pokedex numbers.
+Start the API and send a `POST` request to `http://localhost:3000/pokemon/battles/simulate` with two teams. Each team
+can contain 1 to 6 Pokemon identifiers, using names, numeric ids, or Pokedex numbers.
+
+Available endpoints:
+
+- `GET http://localhost:3000/` - default API response for health check.
+- `POST http://localhost:3000/pokemon/battles/simulate` - simulates a battle between two Pokemon teams.
 
 Example using Pokemon names:
 
