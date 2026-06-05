@@ -26,7 +26,7 @@ npm run db:seed
 Stop the containers when you are done:
 
 ```bash
-npm run docker:down
+npm run docker:down:volumes
 ```
 
 # How to play
