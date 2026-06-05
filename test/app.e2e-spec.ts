@@ -9,11 +9,16 @@ describe('AppController (e2e)', () => {
   let app: INestApplication<App>;
 
   beforeEach(async () => {
+    const connectionMock = {
+      close: jest.fn().mockResolvedValue(undefined),
+      model: jest.fn().mockReturnValue({}),
+      models: {},
+    };
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     })
       .overrideProvider(getConnectionToken())
-      .useValue({ close: jest.fn().mockResolvedValue(undefined) })
+      .useValue(connectionMock)
       .compile();
 
     app = moduleFixture.createNestApplication();

@@ -1,1 +1,49 @@
 GET http://localhost:3000
+
+### Valid battle
+
+POST http://localhost:3000/pokemon/battles/simulate
+Content-Type: application/json
+
+{
+  "teamA": {
+    "name": "Kanto Starters",
+    "pokemon": ["Bulbasaur", "Squirtle"]
+  },
+  "teamB": {
+    "name": "Fire Line",
+    "pokemon": ["004", "Charmeleon"]
+  }
+}
+
+### Not found
+
+POST http://localhost:3000/pokemon/battles/simulate
+Content-Type: application/json
+
+{
+  "teamA": {
+    "name": "Kanto Starters",
+    "pokemon": ["Bulbasaur", "Squirtle", "Susu"]
+  },
+  "teamB": {
+    "name": "Fire Line",
+    "pokemon": ["004", "Charmeleon", "1200"]
+  }
+}
+
+### Invalid
+
+POST http://localhost:3000/pokemon/battles/simulate
+Content-Type: application/json
+
+{
+  "teamA": {
+    "name": "Kanto Starters",
+    "pokemon": ["Bulbasaur", "Squirtle", "Susu", 2348]
+  },
+  "teamB": {
+    "name": "Fire Line",
+    "pokemon": ["004", "Charmeleon", "1200", false]
+  }
+}
