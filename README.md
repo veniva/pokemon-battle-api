@@ -140,7 +140,6 @@ For local development outside Docker, install dependencies first and seed the lo
 ```bash
 npm install
 npm run db:seed:local
-```
 
 # watch mode
 npm run start:dev
