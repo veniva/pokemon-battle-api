@@ -1,7 +1,7 @@
 import { NotFoundException } from '@nestjs/common';
 import { PokemonIdentifierResolution } from '../pokemon.repository';
 import { Pokemon } from '../pokemon.schema';
-import { TeamKey, BattleTeamState, FighterState, ParticipantScore, RoundResult } from './battle-models';
+import { TeamKey, BattleTeamState, FighterState, ParticipantScore, RoundResult } from './pokemon-battle.models';
 import {
   BattleRoundDto,
   BattleTypeEffectDto,

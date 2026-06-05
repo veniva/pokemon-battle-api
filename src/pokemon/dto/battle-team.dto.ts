@@ -18,9 +18,9 @@ export class BattleTeamDto {
   @IsArray()
   @ArrayMinSize(1)
   @ArrayMaxSize(MAX_BATTLE_TEAM_SIZE)
-  @IsString({ each: true })
-  @MaxLength(40, { each: true })
   @Matches(NON_BLANK_TEXT, { each: true, message: 'Each pokemon identifier must not be blank.' })
+  @MaxLength(40, { each: true })
+  @IsString({ each: true })
   @Transform(normalizePokemonIdentifiers)
   pokemon!: string[];
 }
